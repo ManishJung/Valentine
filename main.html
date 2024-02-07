@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will you be my Valentine?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #e53935;
+        }
+        .gif {
+            position: left;
+            top: 20px;
+            width: 200px;
+            z-index: 1;
+            padding: 10px 10px;
+            padding-top: 100px
+        }
+        .button {
+            background-color: #e53935;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button1{background-color: green;}
+        .button2{background-color: red;}
+        button:hover {
+            background-color: peru;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="gif" src="https://media.tenor.com/wmesCSJCxpcAAAAi/tkthao219-bubududu.gif" alt="Valentine GIF">
+        <h1>Will you be my Valentine?</h1>
+        <button id="yesButton" class ="button button1" onclick="replaceContent()">Yes</button>
+        <button id="noButton" class ="button button2" onclick="increaseSize();increaseNoCount();">No</button>
+    </div>
+
+    <script>
+        let yesButton = document.getElementById('yesButton');
+        let noButton = document.getElementById('noButton');
+        let clickCount = 0;
+
+        function increaseSize() {
+            yesButton.style.width = `${yesButton.offsetWidth * 1.1}px`;
+            yesButton.style.height = `${yesButton.offsetHeight * 1.1}px`;
+            yesButton.style.fontSize = `${parseFloat(window.getComputedStyle(yesButton).fontSize) * 1.1}px`;
+        }
+
+        function increaseNoCount() {
+            clickCount++;
+
+            switch (clickCount) {
+                case 1:
+                    noButton.innerText = "are you sure?";
+                    break;
+                case 2:
+                    noButton.innerText = "really sure?";
+                    break;
+                case 3:
+                    noButton.innerText = "are you positive?";
+                    break;
+                case 4:
+                    noButton.innerText = "hachkya";
+                    break;
+                case 5:
+                    noButton.innerText = "think about it";
+                    break;
+                case 6:
+                    noButton.innerText = "If you say no, Ill be very sad.";
+                    break;
+                case 7:
+                    noButton.innerText = "I'll be very very sad";
+                    break;
+                case 8:
+                    noButton.innerText = "I'll be very very very sad";
+                    break;
+                case 9:
+                    noButton.innerText = "Ok fine, I'll stop asking";
+                    break;
+                case 10:
+                    noButton.innerText = "just kidding, please say yes";
+                    break;
+                default:
+                    noButton.innerText = "you're breaking my heart";
+                    break;
+            }
+
+            increaseSize();
+        }
+        function replaceContent() {
+            // Replace the content with the new GIF if "Yes" is clicked
+            let container = document.querySelector('.container');
+            container.innerHTML = `
+                <img src="https://media.tenor.com/ejMtbLv7H-gAAAAi/panda-bear-brown-bear.gif" alt="Panda GIF" style="width: 100%;">
+            `;
+        }
+    </script>
+</body>
+</html>
